@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>技术博客 - 文章详情</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+            background: linear-gradient(160deg, #f0f6fd 0%, #dbe9fa 100%);
+            min-height: 100vh;
+        }
+        /* 页头 */
+        .header {
+            background: linear-gradient(135deg, #2b7de0 0%, #00b4d8 100%);
+            padding: 42px 20px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 30px;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: 6px;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, .25);
+        }
+        /* 导航 */
+        .nav {
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(43, 125, 224, .12);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px 28px;
+        }
+        .nav .notice {
+            width: 100%;
+            text-align: center;
+            font-size: 13px;
+            color: #6b7a8d;
+        }
+        .nav a {
+            color: #2b7de0;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 4px 14px;
+            border-radius: 18px;
+            transition: all .25s;
+        }
+        .nav a:hover { background: #2b7de0; color: #ffffff; }
+        /* 主内容区 */
+        .main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            padding: 42px 20px;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 14px;
+            box-shadow: 0 12px 32px rgba(43, 125, 224, .15);
+            padding: 30px 36px;
+            width: 100%;
+            max-width: 720px;
+        }
+        .card h2 {
+            font-size: 19px;
+            color: #22303f;
+            margin-bottom: 18px;
+            padding-left: 12px;
+            border-left: 4px solid #2b7de0;
+        }
+        /* 文章目录 */
+        .toc {
+            background: #f5f9ff;
+            border-radius: 8px;
+            padding: 14px 18px;
+            line-height: 2;
+            margin-bottom: 14px;
+        }
+        .toc a { color: #2b7de0; text-decoration: none; font-weight: 600; }
+        .toc a:hover { text-decoration: underline; }
+        /* 正文 */
+        .article-body { line-height: 1.9; color: #33404e; }
+        .article-body h3 { font-size: 16px; color: #22303f; margin: 16px 0 8px; }
+        .article-body img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 12px 0;
+            border: 1px solid #e2ebf5;
+        }
+        /* 评论表单 */
+        .comment-form div { margin-bottom: 14px; }
+        .comment-form label { display: block; margin-bottom: 6px; font-weight: 600; color: #22303f; }
+        .comment-form input[type="text"],
+        .comment-form textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #d3dce6;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color .25s, box-shadow .25s;
+        }
+        .comment-form textarea { height: 90px; resize: vertical; }
+        .comment-form input[type="text"]:focus,
+        .comment-form textarea:focus {
+            border-color: #2b7de0;
+            box-shadow: 0 0 0 3px rgba(43, 125, 224, .15);
+        }
+        .comment-form input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #2b7de0, #00b4d8);
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            letter-spacing: 4px;
+            cursor: pointer;
+            transition: opacity .25s, transform .15s;
+        }
+        .comment-form input[type="submit"]:hover { opacity: .88; transform: translateY(-1px); }
+        /* 页脚 */
+        .footer { text-align: center; padding: 22px; }
+        .footer p { font-size: 13px; color: #6b7a8d; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>技术博客</h1>
+    </header>
+    <nav class="nav">
+        <p class="notice">欢迎阅读本站文章，欢迎留言评论！</p>
+        <a href="#">首页</a>
+        <a href="#">关于我们</a>
+        <a href="#">联系我们</a>
+    </nav>
+    <main class="main">
+        <article id="article" class="card">
+            <h2>HTML5 学习笔记</h2>
+            <nav class="toc" aria-label="文章目录">
+                目录：<br>
+                <a href="#item1">一、HTML5 简介</a><br>
+                <a href="#item2">二、语义化标签</a>
+            </nav>
+            <div class="article-body">
+                <p>本笔记介绍 HTML5 的核心特性，适合初学者快速入门。</p>
+                <img src="html5-logo.png" alt="HTML5 标志">
+                <section id="item1">
+                    <h3>一、HTML5 简介</h3>
+                    <p>HTML5 是新一代网页标准，支持多媒体、绘图与语义化等丰富特性。</p>
+                </section>
+                <section id="item2">
+                    <h3>二、语义化标签</h3>
+                    <p>在编写网页时，应尽量使用语义化标签，让结构更清晰、更利于 SEO。</p>
+                </section>
+            </div>
+        </article>
+        <section id="comment" class="card">
+            <h2>发表评论</h2>
+            <form class="comment-form" action="comment.php" method="post">
+                <div>
+                    <label for="nickname">昵称：</label>
+                    <input type="text" id="nickname" name="nickname">
+                </div>
+                <div>
+                    <label for="comment-text">评论：</label>
+                    <textarea id="comment-text" name="comment"></textarea>
+                </div>
+                <div>
+                    <input type="submit" value="提交评论">
+                </div>
+            </form>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>版权所有 &copy; 2026 某某公司</p>
+    </footer>
+</body>
+</html>
