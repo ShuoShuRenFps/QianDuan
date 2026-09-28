@@ -1,6 +1,6 @@
 //  AI 助教答疑平台  ——  个性化注册 / 登录 / 答疑
 //  编译(MinGW / w64devkit):  g++ -std=c++17 main.cpp -o ai_platform.exe -lws2_32
-//  运行:  ai_platform.exe   然后浏览器打开  http://localhost:8080
+//  运行:  ai_platform.exe   然后浏览器打开  http://localhost:8080 
 #include <winsock2.h>
 #include <ws2tcpip.h>
 
