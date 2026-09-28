@@ -1,8 +1,6 @@
-// =============================================================================
-//  AI 助教答疑平台  ——  个性化注册 / 登录 / 答疑  (C++17 + Winsock2)
+//  AI 助教答疑平台  ——  个性化注册 / 登录 / 答疑
 //  编译(MinGW / w64devkit):  g++ -std=c++17 main.cpp -o ai_platform.exe -lws2_32
 //  运行:  ai_platform.exe   然后浏览器打开  http://localhost:8080
-// =============================================================================
 #include <winsock2.h>
 #include <ws2tcpip.h>
 
@@ -19,10 +17,10 @@
 #include <string>
 #include <vector>
 
-#pragma comment(lib, "ws2_32.lib")   // MSVC 自动链接；MinGW 用 -lws2_32
+#pragma comment(lib, "ws2_32.lib")   
 
 static const int    PORT      = 8080;
-static const char*  DATA_FILE = "users.dat";   // 用户持久化文件（与 exe 同目录）
+static const char*  DATA_FILE = "users.dat";   
 
 static std::string trim(const std::string& s) {
     size_t a = 0, b = s.size();
@@ -51,7 +49,7 @@ static std::string url_decode(const std::string& s) {
     }
     return r;
 }
-// 解析 application/x-www-form-urlencoded
+
 static std::map<std::string, std::string> parse_form(const std::string& body) {
     std::map<std::string, std::string> m;
     size_t i = 0;
@@ -61,13 +59,13 @@ static std::map<std::string, std::string> parse_form(const std::string& body) {
         size_t eq = kv.find('=');
         std::string k = url_decode(eq == std::string::npos ? kv : kv.substr(0, eq));
         std::string v = url_decode(eq == std::string::npos ? "" : kv.substr(eq + 1));
-        if (!k.empty() && m.find(k) == m.end()) m[k] = v;   // 多值只取第一个
+        if (!k.empty() && m.find(k) == m.end()) m[k] = v;   
         if (amp == std::string::npos) break;
         i = amp + 1;
     }
     return m;
 }
-// 演示级哈希（FNV-1a 32bit -> 8位十六进制），仅用于作业演示，非安全用途
+
 static std::string hash32(const std::string& s) {
     uint32_t h = 2166136261u;
     for (unsigned char c : s) { h ^= c; h *= 16777619u; }
@@ -118,7 +116,7 @@ static void save_user(const User& u) {
       << u.email << '\t' << u.role << '\t' << u.color << '\t' << u.emoji << '\n';
 }
 
-// 从请求头中取 Cookie 里的 session
+
 static std::string current_user(const std::string& req) {
     size_t p = 0;
     while (true) {
@@ -147,7 +145,6 @@ static std::string current_user(const std::string& req) {
     return "";
 }
 
-// 公共头部样式（浅色卡片风格，呼应设计稿）
 static std::string PAGE_HEAD(const std::string& title, const std::string& accent = "#2563eb") {
     return
 R"HTML(<!DOCTYPE html>
@@ -359,7 +356,7 @@ struct Response {
     int code = 200;
     std::string type = "text/html; charset=utf-8";
     std::string body;
-    std::string extra;   // 额外响应头（Set-Cookie / Location）
+    std::string extra;   
 };
 
 static Response handle(const std::string& method, const std::string& path,
